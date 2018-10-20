@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.oa.outputmateriel.dao.OutputMaterielDaoMapper">
+    <insert id="insertNewOutputMateriel" useGeneratedKeys="true" keyProperty="output_materiel_id"
+            keyColumn="output_materiel_id"  parameterType="com.imooc.oa.outputmateriel.entity.OutputMateriel">
+        INSERT INTO
+        outputmateriel(product_name,materiel_coding_prefix,materiel_code,rohs,
+        materiel_state,materiel_description,serial_number,approval_rating,
+        applicant,outage_time,unit,output_quantity,product_price,category,remarks,
+        total_amount,warehouse,inventory_quantity,output_place,checker,packing_person,
+        output_use,approval_status,first_approver,second_approver,third_approver,
+        fourth_approver, first_custom,second_custom,third_custom,fourth_custom,
+        fifth_custom)
+        VALUES
+        (#{productName},#{materielCodingPrefix},#{materielCode},#{rohs},
+        #{materielState},#{materielDescription} ,#{serialNumber}, #{approvalRating},
+        #{applicant},#{outageTime},#{unit} ,#{outputQuantity}, #{productPrice},
+        #{category},#{remarks},#{productPrice}*#{outputQuantity},#{warehouse},#{inventoryQuantity},
+        #{outputPlace},#{checker},#{packingPerson},#{outputUse},#{approvalStatus},
+        #{firstApprover} ,#{secondApprover}, #{thirdApprover},#{fourthApprover},
+        #{firstCustom},#{secondCustom},#{thirdCustom},#{fourthCustom},#{fifthCustom}
+        )
+    </insert>
+</mapper>

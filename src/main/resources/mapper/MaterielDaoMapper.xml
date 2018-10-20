@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.oa.materiel.dao.MaterielDaoMapper">
+    <insert id="insertnewMateriel" useGeneratedKeys="true" keyProperty="materiel_id"
+            keyColumn="materiel_id"  parameterType="com.imooc.oa.materiel.entity.Materiel">
+        INSERT INTO
+             materiel(product_name,manufacturer,serial_number,shelf_life,
+                      unit,product_price,inventory_quantity,material_receiving_warehouse,
+                    management_personne,materiel_code,remarks,general_category,
+                     small_class,encapsulation,materiel_coding_prefix,storage_data,
+                     coding_rules,seller,batch_number,pn,ds,temperature,materiel_description,
+                     rohs,materiel_state,first_custom,second_custom,third_custom,fourth_custom,
+                     fifth_custom,sixth_custom,seventh_custom,eighth_custom,ninth_custom,tenth_custom)
+        VALUES
+        (#{productName}, #{manufacturer},#{serialNumber},#{shelfLife},#{unit}, #{productPrice},
+        #{inventoryQuantity},#{materialReceivingWarehouse}, #{managementPersonne},#{materielCode},
+        #{remarks},#{generalCategory},#{smallClass},#{encapsulation},#{materielCodingPrefix},#{storageData},
+        #{codingRules},#{seller},#{batchNumber},#{pn},#{ds},#{temperature},#{materielDescription},#{rohs},
+        #{materielState},#{firstCustom},#{secondCustom},#{thirdCustom},#{fourthCustom},#{fifthCustom}
+        ,#{sixthCustom},#{seventhCustom},#{eighthCustom},#{ninthCustom},#{tenthCustom})
+
+    </insert>
+    <update id="updateMateriel" parameterType="com.imooc.oa.materiel.entity.Materiel">
+        update materiel
+        <set>
+            <if test="productName!=null">product_name=#{productName},</if>
+            <if test="manufacturer!=null">manufacturer=#{manufacturer},</if>
+            <if test="serialNumber!=null">serial_number=#{serialNumber},</if>
+            <if test="shelfLife!=null">shelf_life=#{shelfLife},</if>
+            <if test="productPrice!=null">product_price=#{productPrice},</if>
+            <if test="inventoryQuantity!=null">inventory_quantity=#{inventoryQuantity},</if>
+            <if test="materialReceivingWarehouse!=null">material_receiving_warehouse=#{materialReceivingWarehouse},</if>
+            <if test="managementPersonne!=null">management_personne=#{managementPersonne},</if>
+            <if test="materielCode!=null">materiel_code=#{materielCode},</if>
+            <if test="remarks!=null">remarks=#{remarks},</if>
+            <if test="generalCategory!=null">general_category=#{generalCategory},</if>
+            <if test="smallClass!=null">small_class=#{smallClass},</if>
+            <if test="encapsulation!=null">encapsulation=#{encapsulation},</if>
+            <if test="materielCodingPrefix!=null">materiel_coding_prefix=#{materielCodingPrefix},</if>
+            <if test="storageData!=null">storage_data=#{storageData},</if>
+            <if test="codingRules!=null">coding_rules=#{codingRules},</if>
+            <if test="seller!=null">seller=#{seller},</if>
+            <if test="batchNumber!=null">batch_number=#{batchNumber},</if>
+            <if test="pn!=null">pn=#{pn},</if>
+            <if test="ds!=null">ds=#{ds},</if>
+            <if test="temperature!=null">temperature=#{temperature},</if>
+            <if test="materielDescription!=null">materiel_description=#{materielDescription},</if>
+            <if test="rohs!=null">rohs=#{rohs},</if>
+            <if test="materielState!=null">materiel_state=#{materielState},</if>
+            <if test="firstCustom!=null">first_custom=#{firstCustom},</if>
+            <if test="secondCustom!=null">second_custom=#{secondCustom},</if>
+            <if test="thirdCustom!=null">third_custom=#{thirdCustom},</if>
+            <if test="fourthCustom!=null">fourth_custom=#{fourthCustom},</if>
+            <if test="fifthCustom!=null">fifth_custom=#{fifthCustom},</if>
+            <if test="seventhCustom!=null">seventh_custom=#{seventhCustom},</if>
+            <if test="sixthCustom!=null">sixth_custom=#{sixthCustom},</if>
+            <if test="eighthCustom!=null">eighth_custom=#{eighthCustom},</if>
+            <if test="ninthCustom!=null">ninth_custom=#{ninthCustom},</if>
+            <if test="tenthCustom!=null">tenth_custom=#{tenthCustom},</if>
+            <if test="unit!=null">unit=#{unit}</if>
+        </set>
+        where materiel_id=#{materielId}
+    </update>
+    <delete id="deleteMateriel">
+        DELETE FROM
+        materiel
+        WHERE
+        materiel_id=
+        #{materielId}
+    </delete>
+    <insert id="insertlistMateriel" parameterType="com.imooc.oa.materiel.entity.Materiel">
+        insert into materiel(product_name,manufacturer,serial_number,shelf_life,
+        unit,product_price,inventory_quantity,material_receiving_warehouse,
+        management_personne,materiel_code,remarks,general_category,
+        small_class,encapsulation,materiel_coding_prefix,storage_data,
+        coding_rules,seller,batch_number,pn,ds,temperature,materiel_description,rohs,
+        materiel_state,first_custom,second_custom,third_custom,fourth_custom,
+        fifth_custom,sixth_custom,seventh_custom,eighth_custom,ninth_custom,tenth_custom) values
+        <foreach collection="list" index="index" item="item"
+                 separator=",">
+            (#{item.productName}, #{item.manufacturer},#{item.serialNumber},#{item.shelfLife},#{unit}, #{item.productPrice},
+            #{item.inventoryQuantity},#{item.materialReceivingWarehouse}, #{item.managementPersonne},#{item.materielCode},
+            #{item.remarks},#{item.generalCategory},#{item.smallClass},#{item.encapsulation},#{item.materielCodingPrefix},#{item.storageData},
+            #{item.codingRules},#{item.seller},#{item.batchNumber},#{item.pn},#{item.ds},#{item.temperature},#{item.materielDescription},#{item.rohs},
+            #{item.materielState},#{item.firstCustom},#{item.secondCustom},#{item.thirdCustom},#{item.fourthCustom},#{item.fifthCustom}
+            ,#{item.sixthCustom},#{item.seventhCustom},#{item.eighthCustom},#{item.ninthCustom},#{item.tenthCustom})
+        </foreach>
+    </insert>
+    <update id="addMateriel" parameterType="com.imooc.oa.materiel.entity.Materiel">
+        update materiel
+        <set>
+            <if test="manufacturer!=null">manufacturer=#{manufacturer},</if>
+            <if test="serialNumber!=null">serial_number=#{serialNumber},</if>
+            <if test="shelfLife!=null">shelf_life=#{shelfLife},</if>
+            <if test="productPrice!=null">product_price=#{productPrice},</if>
+            <if test="inventoryQuantity!=null">inventory_quantity=#{inventoryQuantity}+inventory_quantity,</if>
+            <if test="materialReceivingWarehouse!=null">material_receiving_warehouse=#{materialReceivingWarehouse},</if>
+            <if test="managementPersonne!=null">management_personne=#{managementPersonne},</if>
+            <if test="materielCode!=null">materiel_code=#{materielCode},</if>
+            <if test="remarks!=null">remarks=#{remarks},</if>
+            <if test="generalCategory!=null">general_category=#{generalCategory},</if>
+            <if test="smallClass!=null">small_class=#{smallClass},</if>
+            <if test="encapsulation!=null">encapsulation=#{encapsulation},</if>
+            <if test="productName!=null">product_name=#{productName},</if>
+            <if test="storageData!=null">storage_data=#{storageData},</if>
+            <if test="codingRules!=null">coding_rules=#{codingRules},</if>
+            <if test="seller!=null">seller=#{seller},</if>
+            <if test="batchNumber!=null">batch_number=#{batchNumber},</if>
+            <if test="pn!=null">pn=#{pn},</if>
+            <if test="ds!=null">ds=#{ds},</if>
+            <if test="temperature!=null">temperature=#{temperature},</if>
+            <if test="materielDescription!=null">materiel_description=#{materielDescription},</if>
+            <if test="rohs!=null">rohs=#{rohs},</if>
+            <if test="materielState!=null">materiel_state=#{materielState},</if>
+            <if test="firstCustom!=null">first_custom=#{firstCustom},</if>
+            <if test="secondCustom!=null">second_custom=#{secondCustom},</if>
+            <if test="thirdCustom!=null">third_custom=#{thirdCustom},</if>
+            <if test="fourthCustom!=null">fourth_custom=#{fourthCustom},</if>
+            <if test="fifthCustom!=null">fifth_custom=#{fifthCustom},</if>
+            <if test="seventhCustom!=null">seventh_custom=#{seventhCustom},</if>
+            <if test="sixthCustom!=null">sixth_custom=#{sixthCustom},</if>
+            <if test="eighthCustom!=null">eighth_custom=#{eighthCustom},</if>
+            <if test="ninthCustom!=null">ninth_custom=#{ninthCustom},</if>
+            <if test="tenthCustom!=null">tenth_custom=#{tenthCustom},</if>
+            <if test="unit!=null">unit=#{unit}</if>
+        </set>
+        where materiel_code=#{materielCode}
+    </update>
+    <update id="reduceMateriel" parameterType="com.imooc.oa.materiel.entity.Materiel">
+        update materiel
+        <set>
+            <if test="inventoryQuantity!=null">inventory_quantity=inventory_quantity-#{inventoryQuantity}</if>
+        </set>
+        where materiel_id=#{materielId}
+    </update>
+</mapper>
